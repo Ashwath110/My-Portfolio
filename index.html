@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ashwath P | AI Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --red: #e50914;
+      --black: #000000;
+      --dark-gray: #141414;
+      --white: #ffffff;
+      --gray: #808080;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* Left Sidebar */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 60px;
+      height: 100vh;
+      background: rgba(20, 20, 20, 0.8);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      padding: 20px 0;
+    }
+
+    .portfolio-text {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      color: var(--red);
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 3px;
+      margin: 30px auto;
+    }
+
+    .sidebar-nav {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+      margin-top: 50px;
+    }
+
+    .sidebar-nav a {
+      color: var(--gray);
+      font-size: 1.3rem;
+      transition: color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .sidebar-nav a:hover,
+    .sidebar-nav a.active {
+      color: var(--red);
+    }
+
+    /* Right Social Icons */
+    .social-sidebar {
+      position: fixed;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      z-index: 100;
+    }
+
+    .social-sidebar a {
+      color: var(--white);
+      font-size: 1.8rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-sidebar a:hover {
+      color: var(--red);
+      transform: scale(1.2);
+    }
+
+    /* Main Content */
+    .main-content {
+      margin-left: 60px;
+      min-height: 100vh;
+    }
+
+    /* Profile Section */
+    #profile {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 100px 0 150px;
+    }
+
+    .profile-content {
+      position: relative;
+      max-width: 800px;
+    }
+
+    .profile-content::before {
+      content: '';
+      position: absolute;
+      left: -50px;
+      top: 0;
+      height: 100%;
+      width: 4px;
+      background: var(--red);
+    }
+
+    .profile-content h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+      line-height: 1.2;
+    }
+
+    .profile-content p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: var(--gray);
+      margin-bottom: 15px;
+      max-width: 700px;
+    }
+
+    .contact-section {
+      margin-top: 50px;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .email-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+
+    .email-link i {
+      font-size: 1.3rem;
+    }
+
+    .resume-btn {
+      background: var(--red);
+      color: var(--white);
+      padding: 12px 30px;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .resume-btn:hover {
+      background: #c40812;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(229, 9, 20, 0.4);
+    }
+
+    /* Content Sections */
+    section {
+      min-height: 100vh;
+      padding: 100px 150px;
+      position: relative;
+    }
+
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 60px;
+      position: relative;
+      display: inline-block;
+    }
+
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--red);
+    }
+
+    .card {
+      background: var(--dark-gray);
+      padding: 30px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+      border-left: 3px solid var(--red);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateX(10px);
+      box-shadow: 0 10px 30px rgba(229, 9, 20, 0.2);
+    }
+
+    .card h3 {
+      color: var(--red);
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .card.nokia-card {
+      background: linear-gradient(135deg, rgba(20, 20, 20, 0.85) 0%, rgba(0, 0, 0, 0.9) 100%),
+                  url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9Im5va2lhR3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNhMDIwNjA7c3RvcC1vcGFjaXR5OjEiLz48c3RvcCBvZmZzZXQ9IjUwJSIgc3R5bGU9InN0b3AtY29sb3I6IzYwMjA2MDtzdG9wLW9wYWNpdHk6MSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzIwNjBhMDtzdG9wLW9wYWNpdHk6MSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNDAwIiBmaWxsPSJ1cmwoI25va2lhR3JhZCkiLz48L3N2Zz4=') center/cover;
+      position: relative;
+      border-left: 3px solid var(--red);
+      box-shadow: 0 10px 40px rgba(229, 9, 20, 0.3);
+    }
+
+    .card.nokia-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(229, 9, 20, 0.1) 0%, rgba(196, 8, 18, 0.1) 100%);
+      pointer-events: none;
+    }
+
+    .card.nokia-card h3,
+    .card.nokia-card p,
+    .card.nokia-card li {
+      position: relative;
+      z-index: 1;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    }
+
+    .card.nokia-card h3 {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .nokia-logo {
+      position: relative;
+      z-index: 1;
+      font-size: 3.5rem;
+      font-weight: 100;
+      letter-spacing: 20px;
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 25px;
+      font-family: 'Roboto', sans-serif;
+      text-transform: uppercase;
+      text-shadow: none;
+      background: transparent;
+      border: none;
+      transition: all 0.3s ease;
+    }
+
+    .nokia-logo:hover {
+      letter-spacing: 22px;
+      opacity: 0.9;
+    }
+
+    .card.nokia-card:hover {
+      box-shadow: 0 15px 50px rgba(229, 9, 20, 0.5);
+      border-left-color: #ff1a1a;
+    }
+
+    .card p {
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+
+    .card ul {
+      margin-top: 15px;
+      padding-left: 20px;
+    }
+
+    .card ul li {
+      color: var(--gray);
+      margin-bottom: 10px;
+    }
+
+    .card a {
+      color: var(--red);
+      text-decoration: none;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .skill-item {
+      background: var(--dark-gray);
+      padding: 25px;
+      text-align: center;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .skill-item:hover {
+      border-color: var(--red);
+      transform: translateY(-5px);
+    }
+
+    .skill-item h4 {
+      color: var(--white);
+      font-size: 1.1rem;
+    }
+
+    /* Project Card Styles */
+    .project-card {
+      background: var(--dark-gray);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 30px;
+      border: 2px solid rgba(229, 9, 20, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(229, 9, 20, 0.3);
+      border-color: var(--red);
+    }
+
+    .project-header {
+      background: linear-gradient(135deg, var(--red) 0%, #c40812 100%);
+      padding: 60px 40px;
+      text-align: center;
+      position: relative;
+    }
+
+    .project-header.sign-language-header {
+      background: linear-gradient(rgba(229, 9, 20, 0.7), rgba(196, 8, 18, 0.8)), url('images/sign-language-demo.png');
+      background-size: cover;
+      background-position: center;
+      padding: 80px 40px;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: 3px solid var(--red);
+      box-shadow: 0 10px 40px rgba(229, 9, 20, 0.5);
+    }
+
+    .project-icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+
+    .project-header h2 {
+      font-size: 2.5rem;
+      margin: 0;
+      color: var(--white);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    .project-header h2::after {
+      display: none;
+    }
+
+    .project-body {
+      padding: 40px;
+    }
+
+    .project-body h3 {
+      font-size: 1.8rem;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .project-badges {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: rgba(229, 9, 20, 0.2);
+      color: var(--red);
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: 1px solid var(--red);
+    }
+
+    .project-description {
+      color: var(--gray);
+      line-height: 1.8;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    .project-highlight {
+      color: var(--white);
+      font-weight: 600;
+      font-size: 1rem;
+      margin: 25px 0;
+      font-family: 'Courier New', monospace;
+      padding: 15px 20px;
+      background: rgba(229, 9, 20, 0.1);
+      border-left: 3px solid var(--red);
+      border-radius: 4px;
+    }
+
+    .project-btn {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      padding: 15px 40px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .project-btn:hover {
+      background: #c40812;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(229, 9, 20, 0.5);
+    }
+
+    /* Research Card Styles */
+    .research-card {
+      background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(30, 30, 30, 0.95) 100%);
+      border-radius: 12px;
+      padding: 50px;
+      margin-bottom: 30px;
+      border: 2px solid rgba(229, 9, 20, 0.2);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .research-card:hover {
+      border-color: rgba(229, 9, 20, 0.6);
+      box-shadow: 0 15px 40px rgba(229, 9, 20, 0.25);
+    }
+
+    .research-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .research-info h4 {
+      color: var(--red);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .research-info h3 {
+      font-size: 2rem;
+      color: var(--white);
+      line-height: 1.4;
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
+
+    .research-info p {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.8;
+      font-size: 1.05rem;
+      margin-bottom: 30px;
+    }
+
+    .research-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--red) 0%, #c40812 100%);
+      color: var(--white);
+      padding: 15px 35px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .research-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(229, 9, 20, 0.5);
+      background: linear-gradient(135deg, #b80711 0%, #a00610 100%);
+    }
+
+    .research-metric {
+      background: rgba(10, 10, 10, 0.95);
+      border-radius: 12px;
+      padding: 40px 30px;
+      text-align: center;
+      border: 1px solid rgba(229, 9, 20, 0.3);
+    }
+
+    .metric-icon {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .metric-value {
+      font-size: 3.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--red) 0%, #ff4444 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+    }
+
+    .metric-label {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px;
+      background: var(--dark-gray);
+      color: var(--gray);
+      margin-left: 60px;
+    }
+
+    /* Chatbot */
+    .chat-button {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.8rem;
+      box-shadow: 0 5px 25px rgba(229, 9, 20, 0.5);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .chat-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 30px rgba(229, 9, 20, 0.7);
+    }
+
+    .chat-window {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      width: 350px;
+      height: 500px;
+      background: var(--dark-gray);
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 999;
+      border: 1px solid var(--red);
+    }
+
+    .chat-window.open {
+      display: flex;
+    }
+
+    .chat-header {
+      background: var(--red);
+      color: var(--white);
+      padding: 15px 20px;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-close {
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .message {
+      padding: 12px 16px;
+      border-radius: 12px;
+      max-width: 80%;
+      word-wrap: break-word;
+    }
+
+    .message.bot {
+      background: var(--red);
+      color: var(--white);
+      align-self: flex-start;
+    }
+
+    .message.user {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      align-self: flex-end;
+    }
+
+    .chat-input-container {
+      padding: 15px;
+      border-top: 1px solid rgba(229, 9, 20, 0.2);
+      display: flex;
+      gap: 10px;
+    }
+
+    .chat-input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1px solid rgba(229, 9, 20, 0.3);
+      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--white);
+      outline: none;
+    }
+
+    .chat-send {
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      padding: 12px 24px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    /* Scroll Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 50px;
+      }
+
+      .portfolio-text {
+        font-size: 1.2rem;
+      }
+
+      #profile,
+      section {
+        padding: 80px 30px;
+      }
+
+      .profile-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .social-sidebar {
+        right: 15px;
+      }
+
+      .chat-window {
+        width: 90%;
+        right: 5%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Left Sidebar -->
+  <div class="sidebar">
+    <div class="portfolio-text">PORTFOLIO</div>
+    <nav class="sidebar-nav">
+      <a href="#profile" title="Profile"><i class="fas fa-user"></i></a>
+      <a href="#about" title="About"><i class="fas fa-graduation-cap"></i></a>
+      <a href="#projects" title="Projects"><i class="fas fa-code"></i></a>
+      <a href="#research" title="Research"><i class="fas fa-flask"></i></a>
+      <a href="#experience" title="Experience"><i class="fas fa-briefcase"></i></a>
+      <a href="#contact" title="Contact"><i class="fas fa-file-alt"></i></a>
+    </nav>
+  </div>
+
+  <!-- Right Social Icons -->
+  <div class="social-sidebar">
+    <a href="https://www.linkedin.com/in/ashwath-p-ab5698327" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://github.com/Ashwath110" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="tel:+919940022882" title="Phone"><i class="fas fa-phone"></i></a>
+  </div>
+
+  <!-- Chatbot -->
+  <button class="chat-button" onclick="toggleChat()">💬</button>
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <span>AI Assistant</span>
+      <button class="chat-close" onclick="toggleChat()">×</button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="message bot">Hi! I'm Ashwath's AI assistant. Ask me about his projects, skills, or experience!</div>
+    </div>
+    <div class="chat-input-container">
+      <input type="text" class="chat-input" id="chatInput" placeholder="Type your message..." onkeypress="handleKeyPress(event)">
+      <button class="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Profile Section -->
+    <section id="profile">
+      <div class="profile-content">
+        <h1>Ashwath P</h1>
+        <p>I'm a final-year Computer Science student specializing in Artificial Intelligence & Machine Learning.</p>
+        <p>I love to learn new things and make new things.</p>
+        <p>I convert ideas into reality.</p>
+        <p>Feel free to contact me.</p>
+        
+        <div class="contact-section">
+          <a href="mailto:ashai011004@gmail.com" class="email-link">
+            <i class="fas fa-envelope"></i>
+            ashai011004@gmail.com
+          </a>
+          <a href="Ashwath_Resume.pdf" target="_blank" class="resume-btn">
+            Resume <i class="fas fa-download"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <h2>EDUCATION</h2>
+      <div class="card reveal">
+        <h3>SRM University, Chennai</h3>
+        <p><strong>Bachelor of Engineering in Computer Science (AI/ML)</strong></p>
+        <p>2022 – 2026 | Chennai, Tamil Nadu</p>
+        <p>CGPA: <strong>9.35</strong></p>
+      </div>
+
+      <h2 style="margin-top: 80px;">SKILLS</h2>
+      <div class="skills-grid">
+        <div class="skill-item"><h4>Python</h4></div>
+        <div class="skill-item"><h4>TensorFlow</h4></div>
+        <div class="skill-item"><h4>PyTorch</h4></div>
+        <div class="skill-item"><h4>Computer Vision</h4></div>
+        <div class="skill-item"><h4>NLP</h4></div>
+        <div class="skill-item"><h4>Deep Learning</h4></div>
+        <div class="skill-item"><h4>ML Pipelines</h4></div>
+        <div class="skill-item"><h4>Model Optimization</h4></div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2>PROJECTS</h2>
+      <div class="project-card reveal">
+        <div class="project-header">
+          <div class="project-icon">🛡️</div>
+          <h2>Anti-Spoofing</h2>
+        </div>
+        <div class="project-body">
+          <h3>Anti Spoofing Detection</h3>
+          <div class="project-badges">
+            <span class="badge">AI</span>
+            <span class="badge">ML</span>
+            <span class="badge">Security</span>
+          </div>
+          <p class="project-description">
+            A robust system to enhance facial recognition security by detecting and preventing spoofing attacks.
+          </p>
+          <div class="project-highlight">
+            Achieved 98% accuracy in identifying spoofing attempts.
+          </div>
+          <a href="https://github.com/Ashwath110/spoofDetect" target="_blank" class="project-btn">
+            View Project on GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-header sign-language-header">
+          <div class="project-icon">🤟</div>
+          <h2>Sign Language Detection</h2>
+        </div>
+        <div class="project-body">
+          <h3>Sign Language Detection</h3>
+          <div class="project-badges">
+            <span class="badge">Computer Vision</span>
+            <span class="badge">Deep Learning</span>
+            <span class="badge">Object Detection</span>
+            <span class="badge">Real-time AI</span>
+            <span class="badge">Machine Learning</span>
+          </div>
+          <p class="project-description">
+            Real-time Indian Sign Language detection system using YOLOv8 deep learning model, trained on custom datasets to recognize and interpret sign language gestures through computer vision.
+          </p>
+          <div class="project-highlight">
+            Achieved 95% mAP in real-time detection and recognition of Indian Sign Language gestures across multiple hand positions and lighting conditions.
+          </div>
+          <a href="https://github.com/Ashwath110/Sign-Language-Detection" target="_blank" class="project-btn">
+            View Project on GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-header">
+          <div class="project-icon">📄</div>
+          <h2>AI-powered Resume Analyzer</h2>
+        </div>
+        <div class="project-body">
+          <h3>AI-powered Resume Analyzer</h3>
+          <div class="project-badges">
+            <span class="badge">AI</span>
+            <span class="badge">ML</span>
+            <span class="badge">NLP</span>
+          </div>
+          <p class="project-description">
+            AI-powered resume analyzer with ATS scoring, semantic skill matching, and AI content detection. Upload your resume, get instant feedback with interactive visualizations, and optimize for job applications.
+          </p>
+          <div class="project-highlight">
+            Built an AI-powered resume analyzer with ML-based content detection, semantic matching using Sentence Transformers (MPNet-v2), and interactive visualizations, processing 962+ real resumes to deliver ATS scoring and actionable recommendations through a Streamlit web interface.
+          </div>
+          <a href="https://github.com/Ashwath110/AI-powered-resume-analyzer" target="_blank" class="project-btn">
+            View Project on GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research">
+      <h2>RESEARCH</h2>
+      <div class="research-card reveal">
+        <div class="research-content">
+          <div class="research-info">
+            <h4>IEEE CONFERENCE PUBLICATION</h4>
+            <h3>Anti Spoofing Detection for Face Recognition using Image Quality Assessment and Deep Learning</h3>
+            <p>
+              This research introduces a novel two-step model combining image quality assessment and a fine-tuned MobileNetV2 architecture to effectively combat face spoofing attacks. Our method demonstrates high accuracy and robustness across various spoofing techniques.
+            </p>
+          </div>
+          <div class="research-metric">
+            <div class="metric-icon">📈</div>
+            <div class="metric-value">96.5%</div>
+            <div class="metric-label">F1 Score</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="research-card reveal">
+        <div class="research-content">
+          <div class="research-info">
+            <h4>IEEE INTERNATIONAL CONFERENCE ON RESEARCH AND TECHNOLOGY</h4>
+            <h3>Accuracy Improvement in Diabetic Retinopathy Detection</h3>
+            <p>
+              Compared four high-performance ML models using CNNs, Transfer Learning, and Ensemble techniques, achieving exceptional precision in early detection of diabetic retinopathy.
+            </p>
+            <a href="https://ieeexplore.ieee.org/document/10895961" target="_blank" class="research-btn">
+              <i class="fas fa-external-link-alt"></i> View IEEE Publication
+            </a>
+          </div>
+          <div class="research-metric">
+            <div class="metric-icon">🎯</div>
+            <div class="metric-value">97%</div>
+            <div class="metric-label">Precision</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+      <h2>EXPERIENCE</h2>
+      <div class="card nokia-card reveal">
+        <div class="nokia-logo">NOKIA</div>
+        <h3>Tech Intern – Nokia Solutions and Networks</h3>
+        <p>October – Present</p>
+        <ul>
+          <li>Improved defect detection accuracy by 15–20% using optimized ML models</li>
+          <li>Increased decision-making efficiency by 30% through large-scale data analysis</li>
+          <li>Built a full-stack trainee management system reducing response time by 40%</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      © 2025 Ashwath P • AI Portfolio
+    </footer>
+  </div>
+
+  <script>
+    // Chatbot
+    function toggleChat() {
+      document.getElementById('chatWindow').classList.toggle('open');
+    }
+
+    function handleKeyPress(event) {
+      if (event.key === 'Enter') {
+        sendMessage();
+      }
+    }
+
+    function sendMessage() {
+      const input = document.getElementById('chatInput');
+      const message = input.value.trim();
+      
+      if (!message) return;
+      
+      addMessage(message, 'user');
+      input.value = '';
+      
+      setTimeout(() => {
+        const response = generateResponse(message.toLowerCase());
+        addMessage(response, 'bot');
+      }, 500);
+    }
+
+    function addMessage(text, sender) {
+      const messagesDiv = document.getElementById('chatMessages');
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `message ${sender}`;
+      messageDiv.textContent = text;
+      messagesDiv.appendChild(messageDiv);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    function generateResponse(message) {
+      if (message.includes('skill') || message.includes('technology')) {
+        return "Ashwath specializes in AI/ML with skills in Python, TensorFlow, PyTorch, Computer Vision, NLP, and Deep Learning.";
+      }
+      if (message.includes('resume') || message.includes('ats')) {
+        return "AI-powered Resume Analyzer: Built with ML-based content detection, semantic matching using Sentence Transformers (MPNet-v2), and interactive visualizations. Processed 962+ real resumes with ATS scoring and actionable recommendations through Streamlit. Domains: AI, ML, NLP.";
+      }
+      if (message.includes('sign language')) {
+        return "Sign Language Detection: Real-time Indian Sign Language detection using YOLOv8 deep learning model. Achieved 95% mAP in real-time detection across multiple hand positions and lighting conditions. Domains: Computer Vision, Deep Learning, Real-time AI.";
+      }
+      if (message.includes('spoofing') || message.includes('anti-spoof')) {
+        return "Anti-Spoofing Detection: Enhanced facial recognition security by detecting and preventing spoofing attacks. Achieved 98% accuracy in identifying spoofing attempts. Domains: AI, ML, Security.";
+      }
+      if (message.includes('project')) {
+        return "Key projects: 1) Anti-Spoofing Detection (98% accuracy), 2) Sign Language Detection (95% mAP with YOLOv8), 3) AI-powered Resume Analyzer (processed 962+ resumes with ML-based content detection and semantic matching). Ask about specific projects for more details!";
+      }
+      if (message.includes('research') || message.includes('publication')) {
+        return "Ashwath published research on Diabetic Retinopathy Detection at IEEE International Conference, achieving 97% precision.";
+      }
+      if (message.includes('experience') || message.includes('work') || message.includes('nokia')) {
+        return "Currently a Tech Intern at Nokia Solutions and Networks, improving defect detection and building management systems.";
+      }
+      if (message.includes('education') || message.includes('university')) {
+        return "Final-year B.Tech student in CSE (AI/ML) at SRM University, Chennai with CGPA of 9.35.";
+      }
+      if (message.includes('contact') || message.includes('email')) {
+        return "Email: ashai011004@gmail.com | Phone: +91 99400 22882 | LinkedIn: ashwath-p-ab5698327 | GitHub: Ashwath110";
+      }
+      if (message.includes('hello') || message.includes('hi')) {
+        return "Hello! Ask me about Ashwath's projects, skills, research, or experience!";
+      }
+      return "I can tell you about Ashwath's skills, projects, research, experience, or contact info. What would you like to know?";
+    }
+
+    // Scroll Reveal
+    const reveals = document.querySelectorAll(".reveal");
+
+    function revealOnScroll() {
+      reveals.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+        const revealPoint = 100;
+
+        if (elementTop < windowHeight - revealPoint) {
+          el.classList.add("active");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+
+    // Active nav link on scroll
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('.sidebar-nav a');
+      
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
