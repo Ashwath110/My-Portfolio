@@ -150,7 +150,33 @@
       margin-top: 50px;
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
       gap: 30px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px 24px;
+      align-items: center;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .contact-link i {
+      color: var(--red);
+    }
+
+    .contact-link:hover {
+      color: var(--red);
     }
 
     .email-link {
@@ -343,6 +369,12 @@
       color: var(--white);
       font-size: 1.1rem;
     }
+      .skill-item p {
+        color: var(--gray);
+        line-height: 1.6;
+        font-size: 0.95rem;
+        margin-top: 12px;
+      }
 
     /* Project Card Styles */
     .project-card {
@@ -771,18 +803,20 @@
     <section id="profile">
       <div class="profile-content">
         <h1>Ashwath P</h1>
-        <p>I'm a final-year Computer Science student specializing in Artificial Intelligence & Machine Learning.</p>
-        <p>I love to learn new things and make new things.</p>
-        <p>I convert ideas into reality.</p>
-        <p>Feel free to contact me.</p>
+        <p>Chennai, Tamil Nadu</p>
+        <p>Final-year Computer Science student specializing in Artificial Intelligence &amp; Machine Learning.</p>
+        <p>I build applied AI systems, computer vision pipelines, and data-driven tools.</p>
         
         <div class="contact-section">
-          <a href="mailto:ashai011004@gmail.com" class="email-link">
-            <i class="fas fa-envelope"></i>
-            ashai011004@gmail.com
-          </a>
-          <a href="Ash_Resume.pdf?v=20260514" target="_blank" class="resume-btn">
-            Resume <i class="fas fa-download"></i>
+          <div class="contact-links">
+            <a href="tel:+919940022882" class="contact-link"><i class="fas fa-phone"></i>9940022882</a>
+            <a href="mailto:ashai011004@gmail.com" class="contact-link"><i class="fas fa-envelope"></i>ashai011004@gmail.com</a>
+            <a href="https://www.linkedin.com/in/ashwath-p-ab5698327" target="_blank" class="contact-link"><i class="fab fa-linkedin-in"></i>linkedin.com/in/ashwath-p</a>
+            <a href="https://github.com/Ashwath110" target="_blank" class="contact-link"><i class="fab fa-github"></i>github.com/Ashwath110</a>
+            <a href="index.html" class="contact-link"><i class="fas fa-globe"></i>Portfolio</a>
+          </div>
+          <a href="Ash_Resume_June_2026.pdf?v=20260610" target="_blank" class="resume-btn">
+            Updated Resume <i class="fas fa-download"></i>
           </a>
         </div>
       </div>
@@ -798,11 +832,36 @@
         <p>CGPA: <strong>9.37/10</strong></p>
       </div>
 
-      <h2 style="margin-top: 80px;">SKILLS</h2>
+      <h2 style="margin-top: 80px;">TECHNICAL SKILLS</h2>
       <div class="skills-grid">
-        <div class="skill-item"><h4>Python</h4></div>
-        <div class="skill-item"><h4>C</h4></div>
-        <div class="skill-item"><h4>SQL</h4></div>
+        <div class="skill-item">
+          <h4>Languages</h4>
+          <p>Python, C, SQL</p>
+        </div>
+        <div class="skill-item">
+          <h4>Frameworks</h4>
+          <p>TensorFlow, PyTorch, Keras, Scikit-learn, Streamlit, Plotly, Sentence-Transformers, Detectron2</p>
+        </div>
+        <div class="skill-item">
+          <h4>Libraries</h4>
+          <p>NumPy, Pandas, OpenCV, Matplotlib, Seaborn, PyPDF2, pdfplumber</p>
+        </div>
+        <div class="skill-item">
+          <h4>Developer Tools</h4>
+          <p>GitHub, VS Code, Google Colab, Jupyter, REST APIs</p>
+        </div>
+      </div>
+
+      <h2 style="margin-top: 80px;">CERTIFICATIONS</h2>
+      <div class="card reveal">
+        <div class="project-badges">
+          <span class="badge">Python</span>
+          <span class="badge">Neural Networks</span>
+          <span class="badge">AI Foundations</span>
+          <span class="badge">Natural Language Processing</span>
+          <span class="badge">Machine Learning</span>
+          <span class="badge">Generative AI</span>
+        </div>
       </div>
 
       <h2 style="margin-top: 80px;">LEADERSHIP / EXTRACURRICULAR</h2>
@@ -823,48 +882,23 @@
       <div class="project-card reveal">
         <div class="project-header">
           <div class="project-icon">🛡️</div>
-          <h2>Anti-Spoofing</h2>
+          <h2>Real-Time Face Anti-Spoofing System</h2>
         </div>
         <div class="project-body">
-          <h3>Anti Spoofing Detection</h3>
+          <h3>Real-Time Face Anti-Spoofing System</h3>
           <div class="project-badges">
-            <span class="badge">AI</span>
-            <span class="badge">ML</span>
-            <span class="badge">Security</span>
+            <span class="badge">TensorFlow</span>
+            <span class="badge">MiniFASNet</span>
+            <span class="badge">Fourier Features</span>
+            <span class="badge">RetinaFace</span>
           </div>
           <p class="project-description">
-            A robust system to enhance facial recognition security by detecting and preventing spoofing attacks.
+            Trained a spoof-detection model for production-grade face anti-spoofing with rigorous data preprocessing, feature engineering, and hyperparameter tuning.
           </p>
           <div class="project-highlight">
-            Achieved 98% accuracy in identifying spoofing attempts.
+            Achieved 98.55% accuracy and AUC 0.98.
           </div>
           <a href="https://github.com/Ashwath110/spoofDetect" target="_blank" class="project-btn">
-            View Project on GitHub
-          </a>
-        </div>
-      </div>
-
-      <div class="project-card reveal">
-        <div class="project-header sign-language-header">
-          <div class="project-icon">🤟</div>
-          <h2>Sign Language Detection</h2>
-        </div>
-        <div class="project-body">
-          <h3>Sign Language Detection</h3>
-          <div class="project-badges">
-            <span class="badge">Computer Vision</span>
-            <span class="badge">Deep Learning</span>
-            <span class="badge">Object Detection</span>
-            <span class="badge">Real-time AI</span>
-            <span class="badge">Machine Learning</span>
-          </div>
-          <p class="project-description">
-            Real-time Indian Sign Language detection system using YOLOv8 deep learning model, trained on custom datasets to recognize and interpret sign language gestures through computer vision.
-          </p>
-          <div class="project-highlight">
-            Achieved 95% mAP in real-time detection and recognition of Indian Sign Language gestures across multiple hand positions and lighting conditions.
-          </div>
-          <a href="https://github.com/Ashwath110/Sign-Language-Detection" target="_blank" class="project-btn">
             View Project on GitHub
           </a>
         </div>
@@ -878,15 +912,16 @@
         <div class="project-body">
           <h3>AI-powered Resume Analyzer</h3>
           <div class="project-badges">
-            <span class="badge">AI</span>
-            <span class="badge">ML</span>
-            <span class="badge">NLP</span>
+            <span class="badge">Pandas</span>
+            <span class="badge">Plotly</span>
+            <span class="badge">PyPDF2</span>
+            <span class="badge">Sentence-Transformers</span>
           </div>
           <p class="project-description">
-            AI-powered resume analyzer with ATS scoring, semantic skill matching, and AI content detection. Upload your resume, get instant feedback with interactive visualizations, and optimize for job applications.
+            Built an ATS scoring engine using MPNet-v2 embeddings across 5 key dimensions, enabling intelligent resume-to-JD matching with role-specific candidate feedback.
           </p>
           <div class="project-highlight">
-            Built an AI-powered resume analyzer with ML-based content detection, semantic matching using Sentence Transformers (MPNet-v2), and interactive visualizations, processing 962+ real resumes to deliver ATS scoring and actionable recommendations through a Streamlit web interface.
+            Processes resumes and job descriptions to deliver ATS analytics, semantic matching, and performance insights.
           </div>
           <a href="https://github.com/Ashwath110/AI-powered-resume-analyzer" target="_blank" class="project-btn">
             View Project on GitHub
@@ -905,13 +940,14 @@
             <span class="badge">Computer Vision</span>
             <span class="badge">Deep Learning</span>
             <span class="badge">Streamlit</span>
-            <span class="badge">Predictive Maintenance</span>
+            <span class="badge">XGBoost</span>
+            <span class="badge">LSTM</span>
           </div>
           <p class="project-description">
-            Streamlit-based application for vehicle damage inspection and predictive maintenance decision support using images, operational logs, and sensor streams.
+            Implemented an end-to-end vehicle damage detection pipeline processing multi-modal images, sensor data, and vehicle metadata through cleaning, normalization, encoding, and feature extraction.
           </p>
           <div class="project-highlight">
-            Produces damage classification, severity/risk scoring, and maintenance recommendations.
+            Engineered a hybrid XGBoost-LSTM model with FCM and GMM clustering for accurate damage classification.
           </div>
           <a href="https://github.com/Ashwath110/ADVIS-Automated-Deep-Visual-Inspection-System-for-Vehicle-Damage-Detection-and-Classification" target="_blank" class="project-btn">
             View Project on GitHub
@@ -922,14 +958,14 @@
 
     <!-- Research Section -->
     <section id="research">
-      <h2>RESEARCH</h2>
+      <h2>RESEARCH WORK &amp; PUBLICATIONS</h2>
       <div class="research-card reveal">
         <div class="research-content">
           <div class="research-info">
             <h4>IEEE ICRASET 2024</h4>
-            <h3>Accuracy Improvement in Diabetic Retinopathy Detection</h3>
+            <h3>Accuracy Improvement in DR using ML | CNN, LSTM, Transfer Learning</h3>
             <p>
-              Designed a multi-class DR severity classifier by benchmarking CNN, Transfer Learning, CNN+LSTM Ensemble, and GBM models for robust clinical decision support.
+              Designed a multi-class DR severity classifier (No DR, Mild, Severe) by benchmarking CNN, Transfer Learning, CNN+LSTM Ensemble, and GBM models for robust clinical decision support.
             </p>
             <a href="https://ieeexplore.ieee.org/document/10895961" target="_blank" class="research-btn">
               <i class="fas fa-external-link-alt"></i> View IEEE Publication
@@ -937,8 +973,8 @@
           </div>
           <div class="research-metric">
             <div class="metric-icon">🎯</div>
-            <div class="metric-value">97%</div>
-            <div class="metric-label">Precision</div>
+            <div class="metric-value">96.5%</div>
+            <div class="metric-label">F1-score</div>
           </div>
         </div>
       </div>
@@ -953,9 +989,9 @@
         <h3>Research and Development Intern – Nokia Solutions and Networks</h3>
         <p>Oct 2025 – Mar 2026 | Tamil Nadu</p>
         <ul>
-          <li>Built AI/ML computer vision pipelines for industrial automation, including annotation, preprocessing, augmentation, and model validation to improve defect detection accuracy.</li>
-          <li>Developed Industry 4.0 applications integrating React, TypeScript, Node.js, MySQL, and Raspberry Pi for automated process control and real-time monitoring.</li>
-          <li>Applied supervised ML, PLC automation, and real-time validation workflows to reduce manual intervention and setup defects.</li>
+          <li>Built AI/ML computer vision pipelines for industrial automation, including annotation, preprocessing, augmentation, and model validation to improve defect detection accuracy and manufacturing process reliability.</li>
+          <li>Developed Industry 4.0 applications integrating React, TypeScript, Node.js, MySQL, and Raspberry Pi to enable smarter automation and process control, real-time production monitoring, and error-proof smart manufacturing operations.</li>
+          <li>Applied supervised ML, PLC automation, and real-time validation workflows to reduce manual intervention and setup defects; collaborated with cross-functional teams on full-stack development and embedded systems integration.</li>
         </ul>
       </div>
     </section>
@@ -1000,25 +1036,25 @@
 
     function generateResponse(message) {
       if (message.includes('skill') || message.includes('technology')) {
-        return "Core skills: Python, C, SQL, TensorFlow, PyTorch, Scikit-learn, OpenCV, Streamlit, Plotly, Sentence-Transformers, Detectron2, REST APIs, and GitHub.";
+        return "Technical skills: Python, C, SQL, TensorFlow, PyTorch, Keras, Scikit-learn, Streamlit, Plotly, Sentence-Transformers, Detectron2, NumPy, Pandas, OpenCV, Matplotlib, Seaborn, PyPDF2, pdfplumber, GitHub, VS Code, Google Colab, Jupyter, and REST APIs.";
       }
       if (message.includes('resume') || message.includes('ats')) {
-        return "AI-powered Resume Analyzer: Built with ML-based content detection, semantic matching using Sentence Transformers (MPNet-v2), and interactive visualizations. Processed 962+ real resumes with ATS scoring and actionable recommendations through Streamlit. Domains: AI, ML, NLP.";
+        return "AI-powered Resume Analyzer: Built an ATS scoring engine using MPNet-v2 embeddings across 5 key dimensions, enabling intelligent resume-to-JD matching with role-specific candidate feedback. It uses Pandas, Plotly, and PyPDF2.";
       }
       if (message.includes('sign language')) {
-        return "Sign Language Detection: Real-time Indian Sign Language detection using YOLOv8 deep learning model. Achieved 95% mAP in real-time detection across multiple hand positions and lighting conditions. Domains: Computer Vision, Deep Learning, Real-time AI.";
+        return "The updated portfolio now focuses on Real-Time Face Anti-Spoofing System, AI-powered Resume Analyzer, and ADVIS instead of the older sign language project.";
       }
       if (message.includes('spoofing') || message.includes('anti-spoof')) {
-        return "Anti-Spoofing Detection: Enhanced facial recognition security by detecting and preventing spoofing attacks. Achieved 98% accuracy in identifying spoofing attempts. Domains: AI, ML, Security.";
+        return "Real-Time Face Anti-Spoofing System: Trained a spoof-detection model with TensorFlow, MiniFASNet, Fourier Features, and RetinaFace, achieving 98.55% accuracy and AUC 0.98.";
       }
       if (message.includes('project')) {
-        return "Key projects: 1) Anti-Spoofing Detection (98% accuracy), 2) Sign Language Detection (95% mAP with YOLOv8), 3) AI-powered Resume Analyzer (processed 962+ resumes with ML-based content detection and semantic matching). Ask about specific projects for more details!";
+        return "Key projects: 1) Real-Time Face Anti-Spoofing System (98.55% accuracy), 2) AI-powered Resume Analyzer (ATS matching with MPNet-v2), 3) ADVIS (vehicle damage detection with XGBoost-LSTM). Ask about any of them for more details!";
       }
       if (message.includes('research') || message.includes('publication')) {
-        return "Research: DR severity classification at IEEE ICRASET 2024 with 97% precision and 96.5% F1-score.";
+        return "Research and publication: Accuracy Improvement in DR using ML at IEEE ICRASET 2024, with 97% precision, 96.8% accuracy, 96.9% recall, and 96.5% F1-score.";
       }
       if (message.includes('experience') || message.includes('work') || message.includes('nokia')) {
-        return "Research and Development Intern at Nokia Solutions and Networks (Oct 2025 – Mar 2026), building AI/ML CV pipelines and Industry 4.0 applications for smart manufacturing.";
+        return "Research and Development Intern at Nokia Solutions and Networks (Oct 2025 – Mar 2026), building AI/ML computer vision pipelines and Industry 4.0 applications for smart manufacturing.";
       }
       if (message.includes('education') || message.includes('university')) {
         return "B.Tech in CSE (AI & ML) at SRM Institute of Science and Technology, Chennai (Sep 2022 – May 2026), CGPA 9.37/10.";
